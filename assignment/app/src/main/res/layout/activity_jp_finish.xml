@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FE9A36"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/menub"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="15dp"
+            android:id="@+id/menu"/>
+
+        <Button
+            android:id="@+id/back"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/back"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="70dp"
+
+            />
+        <Button
+            android:id="@+id/home"
+            android:layout_width="49dp"
+            android:layout_height="49dp"
+            android:background="@drawable/home"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="180dp"
+            />
+        <Button
+            android:id="@+id/people"
+            android:layout_width="49dp"
+            android:layout_height="49dp"
+            android:background="@drawable/people"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="290dp"
+            />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/logo"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bgw"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="480dp"
+            android:layout_margin="15dp"
+            android:gravity="center"
+            android:scrollbarAlwaysDrawHorizontalTrack="true"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/eatWho"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:gravity="center"
+                    android:text="糊誰  ?"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/player1"
+                        android:layout_width="270px"
+                        android:layout_height="270px"
+                        android:background="@drawable/player1" />
+
+
+                    <Button
+                        android:id="@+id/player2"
+                        android:layout_width="270px"
+                        android:layout_height="270px"
+                        android:layout_marginLeft="150dp"
+                        android:background="@drawable/player2" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp">
+
+                    <Button
+                        android:id="@+id/player3"
+                        android:layout_width="270px"
+                        android:layout_height="270px"
+                        android:background="@drawable/player3" />
+
+
+                    <Button
+                        android:id="@+id/self"
+                        android:layout_width="270px"
+                        android:layout_height="270px"
+                        android:layout_marginLeft="150dp"
+                        android:text="自摸"
+                        android:textSize="20dp"
+                        android:background="@drawable/player4" />
+                </RelativeLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="78dp"
+                        android:layout_marginLeft="81dp"
+                        android:gravity="center"
+                        android:text="多少番?"
+                        android:textSize="26sp" />
+
+                    <Spinner
+                        android:id="@+id/numberEaten"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_marginLeft="30dp"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/Fu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="58dp"
+                        android:gravity="center"
+                        android:text="多少符?(5番以上輸入0)"
+                        android:textSize="23sp" />
+
+                    <EditText
+                        android:id="@+id/numberOfFu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="18dp"
+                        android:layout_marginRight="49dp"
+                        android:inputType="number"
+                        android:maxLength="3"
+                        android:text="" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/whoMainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:maxLines="2"
+                        android:text="誰是莊家?\n(自摸時才選，自身非莊家，系統會自動多糊莊家一台)"
+                        android:textSize="17dp"
+                        android:textStyle="bold"
+
+                        />
+
+                    <RadioGroup
+                        android:id="@+id/group"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/itself"
+                            style="@style/CustomRadioTheme"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:scaleX="1.3"
+                            android:scaleY="1.3"
+                            android:text="自己" />
+
+                        <RadioButton
+                            android:id="@+id/up"
+                            style="@style/CustomRadioTheme"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:scaleX="1.3"
+                            android:scaleY="1.3"
+                            android:text="" />
+
+                        <RadioButton
+                            android:id="@+id/opposite"
+                            style="@style/CustomRadioTheme"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:scaleX="1.3"
+                            android:scaleY="1.3"
+                            android:text="" />
+
+                        <RadioButton
+                            android:id="@+id/down"
+                            style="@style/CustomRadioTheme"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:scaleX="1.3"
+                            android:scaleY="1.3"
+                            android:text="" />
+                    </RadioGroup>
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</LinearLayout>

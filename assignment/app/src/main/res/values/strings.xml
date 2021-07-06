@@ -1,0 +1,70 @@
+<resources>
+    <string name="app_name">賭博計算器</string>
+    <string name="hello_world">Login Screen</string>
+    <string name="username">Username:</string>
+    <string name="password">Password:</string>
+    <string name="Login">Login</string>
+    <string name="SignUp">Sign Up</string>
+
+    <string-array name="money">
+        <item>32</item>
+        <item>64</item>
+        <item>128</item>
+        <item>256</item>
+    </string-array>
+
+    <string-array name="numberOfEaten">
+        <item>--請選擇--</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+    </string-array>
+
+    <string-array name="JpPoint">
+        <item>--請選擇--</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>雙倍役滿</item>
+        <item>三倍役滿</item>
+        <item>四倍役滿</item>
+        <item>五倍役滿</item>
+        <item>六倍役滿</item>
+        <item>七倍役滿</item>
+    </string-array>
+
+
+    <string name="linkus">
+        <a href="https://zh.wikipedia.org/wiki/%E7%BE%8E%E5%9C%8B%E9%BA%BB%E5%B0%87">美國麻將的玩法詳細請按此</a>
+    </string>
+
+    <string name="linktw">
+        <a href="https://zh.wikipedia.org/wiki/%E5%8F%B0%E7%81%A3%E9%BA%BB%E5%B0%87">台灣麻雀的玩法詳細請按此</a>
+    </string>
+
+    <string name="linkjp">
+        <a href="https://zh.wikipedia.org/wiki/%E6%97%A5%E6%9C%AC%E9%BA%BB%E9%9B%80">日本麻雀的玩法詳細請按此</a>
+    </string>
+
+    <string name="linkhk">
+        <a href="https://zh.wikipedia.org/wiki/%E9%A6%99%E6%B8%AF%E9%BA%BB%E9%9B%80">香港麻將的玩法詳細請按此</a>
+    </string>
+</resources>

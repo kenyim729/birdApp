@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FE9A36"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/menub"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="15dp"
+            android:id="@+id/menu"/>
+
+        <Button
+            android:id="@+id/back"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/back"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="70dp"
+
+            />
+        <Button
+            android:id="@+id/home"
+            android:layout_width="49dp"
+            android:layout_height="49dp"
+            android:background="@drawable/home"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="180dp"
+            />
+        <Button
+            android:id="@+id/people"
+            android:layout_width="49dp"
+            android:layout_height="49dp"
+            android:background="@drawable/people"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="290dp"
+            />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/logo"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bgw"
+        android:orientation="vertical"
+        android:gravity="center"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="480dp"
+            android:layout_margin="15dp"
+            android:orientation="vertical"
+            android:visibility="visible"
+            android:gravity="center"
+            android:weightSum="10">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="輸入玩家資料"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+            <EditText
+                android:id="@+id/player1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:layout_marginLeft="80dp"
+                android:layout_marginEnd="80dp"
+                android:layout_marginRight="80dp"
+                android:hint="玩家1:"
+                android:textSize="18sp"
+                android:layout_weight="1"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text=""/>
+
+
+            <EditText
+                android:id="@+id/player2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:layout_marginLeft="80dp"
+                android:layout_marginEnd="80dp"
+                android:layout_marginRight="80dp"
+                android:hint="玩家2:"
+                android:textSize="18sp"
+                android:layout_weight="1"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text=""/>
+
+            <EditText
+                android:id="@+id/player3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:layout_marginLeft="80dp"
+                android:layout_marginEnd="80dp"
+                android:layout_marginRight="80dp"
+                android:hint="玩家3:"
+                android:textSize="18sp"
+                android:layout_weight="1"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text=""/>
+
+            <EditText
+                android:id="@+id/player4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:layout_marginLeft="80dp"
+                android:layout_marginEnd="80dp"
+                android:layout_marginRight="80dp"
+                android:hint="玩家4:"
+                android:textSize="18sp"
+                android:layout_weight="1"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text=""/>
+
+
+
+            <Button
+                android:id="@+id/start"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="125dp"
+                android:layout_marginLeft="125dp"
+
+                android:layout_marginEnd="125dp"
+                android:layout_marginRight="125dp"
+                android:text="開始"
+                android:textSize="25sp"
+                android:background="@drawable/doneb"
+                android:layout_weight="1"/>
+
+
+
+
+
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

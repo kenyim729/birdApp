@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FE9A36"
+    tools:context=".Introduce">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/menub"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="15dp"
+            android:id="@+id/menu"/>
+
+        <Button
+            android:id="@+id/back"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/back"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="70dp"
+
+            />
+        <Button
+            android:id="@+id/home"
+            android:layout_width="49dp"
+            android:layout_height="49dp"
+            android:background="@drawable/home"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="180dp"
+            />
+        <Button
+            android:id="@+id/people"
+            android:layout_width="49dp"
+            android:layout_height="49dp"
+            android:background="@drawable/people"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="290dp"
+            />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+
+        >
+
+        <Button
+            android:layout_width="0px"
+            android:layout_height="230px"
+            android:background="@drawable/doneb"
+            android:text="港"
+            android:textSize="40dp"
+            android:textColor="#FFFFFF"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:id="@+id/hkbu"
+            />
+        <Button
+            android:layout_width="0px"
+            android:layout_height="230px"
+            android:background="@drawable/doneb"
+            android:text="台"
+            android:textSize="40dp"
+            android:textColor="#FFFFFF"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:id="@+id/twbu"
+            />
+
+        <Button
+            android:layout_width="0px"
+            android:layout_height="230px"
+            android:background="@drawable/doneb"
+            android:text="日"
+            android:textSize="40dp"
+            android:textColor="#FFFFFF"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:id="@+id/jpbu"
+            />
+        <Button
+            android:layout_width="0px"
+            android:layout_height="230px"
+            android:background="@drawable/doneb"
+            android:text="美"
+            android:textSize="40dp"
+            android:textColor="#FFFFFF"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:id="@+id/usbu"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bgw"
+        android:orientation="vertical"
+        android:gravity="center"
+        >
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="480dp"
+            android:layout_margin="15dp"
+            android:gravity="center"
+            android:scrollbarAlwaysDrawHorizontalTrack="true"
+            android:scrollbars="none">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:gravity="center_horizontal"
+                    android:text="按下按鈕即可看見各式麻雀玩法和介紹"
+                    android:id="@+id/playintro"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/linkhk"
+                    android:id="@+id/playintro2"
+                    android:visibility="invisible"
+                    android:textSize="20dp"
+
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/linkjp"
+                    android:id="@+id/playintro3"
+                    android:visibility="invisible"
+                    android:textSize="20dp"
+
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/linktw"
+                    android:id="@+id/playintro4"
+                    android:visibility="invisible"
+                    android:textSize="20dp"
+
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/linkus"
+                    android:id="@+id/playintro5"
+                    android:visibility="invisible"
+                    android:textSize="20dp"
+
+                    />
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+</LinearLayout>

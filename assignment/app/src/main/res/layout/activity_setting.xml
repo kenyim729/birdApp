@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal|center_vertical"
+    android:background="@drawable/bg1"
+    tools:context=".setting"
+    android:weightSum="10">
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:background="@drawable/logo"
+        android:layout_weight="4"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bgww"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="該程式由\n羅升陽(200353620)  \n葉君怡(200216975) \n蔡曜陽(200117900)  \n朱嘉淘(200243676)  \n吳學榮(200232441)  \n開發"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:layout_margin="50dp"
+            />
+    </LinearLayout>
+    <Button
+        android:layout_width="180dp"
+        android:layout_height="0px"
+        android:layout_weight="1"
+        android:text="贊助"
+        android:layout_marginTop="30dp"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:onClick="payme"
+        android:background="@drawable/startb"
+        />
+
+
+</LinearLayout>

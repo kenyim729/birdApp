@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal|center_vertical"
+    android:background="@drawable/bg1"
+    tools:context=".MainActivity"
+    >
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="300px"
+        android:background="@drawable/logo"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/bgww"
+        android:padding="35dp"
+        android:layout_margin="60dp"
+        android:gravity="center_vertical|center_horizontal"
+        >
+
+        <Button
+            android:id="@+id/mj"
+            android:layout_width="180dp"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:text="開始計分"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:background="@drawable/startb"
+            />
+        <Button
+            android:id="@+id/method"
+            android:layout_width="180dp"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:text="各式麻雀玩法"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:background="@drawable/startb"
+            android:layout_marginTop="35dp"
+            />
+        <Button
+            android:id="@+id/discuss"
+            android:layout_width="180dp"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:text="討論區"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:background="@drawable/startb"
+            android:layout_marginTop="35dp"
+            />
+        <Button
+            android:id="@+id/setting"
+            android:layout_width="180dp"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:text="製作名單"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:background="@drawable/startb"
+            android:layout_marginTop="35dp"
+            />
+    </LinearLayout>
+
+</LinearLayout>

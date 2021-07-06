@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FE9A36"
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    >
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/menub"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="15dp"
+            android:id="@+id/menu"
+            />
+
+        <Button
+            android:id="@+id/back"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/back"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="70dp"
+
+            />
+        <Button
+            android:id="@+id/home"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/home"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="180dp"
+            />
+        <Button
+            android:id="@+id/people"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/people"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="290dp"
+            />
+
+
+
+
+
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        android:src="@drawable/logo"
+        />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bgw"
+        android:orientation="vertical"
+        android:gravity="center"
+
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:text="選擇你想玩的麻雀玩法"
+            android:textSize="26dp"
+            android:textStyle="bold"
+            />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="35dp"
+            >
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <Button
+                    android:id="@+id/hk"
+                    android:layout_width="270px"
+                    android:layout_height="270px"
+                    android:textSize="30dp"
+                    android:background="@drawable/doneb"
+                    android:text="港"
+                    android:textColor="#ffffff"
+                    />
+
+                <Button
+                    android:id="@+id/tw"
+                    android:layout_width="270px"
+                    android:layout_height="270px"
+                    android:layout_marginLeft="150dp"
+                    android:background="@drawable/doneb"
+                    android:text="台"
+                    android:textSize="30dp"
+                    android:textColor="#ffffff"
+                    />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp">
+
+                <Button
+                    android:id="@+id/jp"
+                    android:layout_width="270px"
+                    android:layout_height="270px"
+                    android:background="@drawable/doneb"
+                    android:text="日"
+                    android:textSize="30dp"
+                    android:textColor="#ffffff"
+                    />
+
+
+                <Button
+                    android:id="@+id/usa"
+                    android:layout_width="270px"
+                    android:layout_height="270px"
+                    android:background="@drawable/doneb"
+                    android:layout_marginLeft="150dp"
+                    android:text="美"
+                    android:textSize="30dp"
+                    android:textColor="#ffffff"
+                    />
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>

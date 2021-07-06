@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FE9A36"
+    tools:context=".Introduce">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/menub"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="15dp"
+            android:id="@+id/menu"/>
+
+        <Button
+            android:id="@+id/back"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/back"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="70dp"
+
+            />
+        <Button
+            android:id="@+id/home"
+            android:layout_width="49dp"
+            android:layout_height="49dp"
+            android:background="@drawable/home"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="180dp"
+            />
+        <Button
+            android:id="@+id/people"
+            android:layout_width="49dp"
+            android:layout_height="49dp"
+            android:background="@drawable/people"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="290dp"
+            />
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="20dp"
+        android:paddingTop="20dp"
+        android:background="@drawable/bgww"
+        android:layout_weight="1"/>
+
+    <EditText
+        android:id="@+id/add_comment"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Add comment"
+        android:imeOptions="actionDone"
+        android:background="@drawable/bgww"
+        android:singleLine="true">
+    </EditText>
+
+</LinearLayout>

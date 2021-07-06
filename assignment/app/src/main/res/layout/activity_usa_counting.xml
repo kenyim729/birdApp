@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FE9A36"
+    android:orientation="vertical"
+    tools:context=".UsaCounting"
+    >
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/menub"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="15dp"
+            android:id="@+id/menu"/>
+
+        <Button
+            android:id="@+id/back"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/back"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="70dp"
+
+            />
+        <Button
+            android:id="@+id/home"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/home"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="180dp"
+            />
+        <Button
+            android:id="@+id/people"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/people"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="290dp"
+            />
+
+
+
+
+
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        android:src="@drawable/logo"
+        />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bgw"
+        android:orientation="vertical"
+        android:gravity="center"
+        >
+
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bgy"
+            android:padding="35dp"
+            >
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <Button
+                    android:layout_width="270px"
+                    android:layout_height="270px"
+                    android:id="@+id/player1"
+                    android:background="@drawable/player1"
+                    />
+
+
+
+                <Button
+                    android:id="@+id/player2"
+                    android:layout_width="270px"
+                    android:layout_height="270px"
+                    android:layout_marginLeft="150dp"
+                    android:background="@drawable/player2"
+                    />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp">
+
+                <Button
+                    android:id="@+id/player3"
+                    android:layout_width="270px"
+                    android:layout_height="270px"
+                    android:background="@drawable/player3"
+                    />
+
+
+                <Button
+                    android:id="@+id/player4"
+                    android:layout_width="270px"
+                    android:layout_height="270px"
+                    android:background="@drawable/player4"
+                    android:layout_marginLeft="150dp"
+                    />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp">
+
+            <ImageButton
+                android:id="@+id/recordPage"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/doneb"
+                android:src="@drawable/reco"
+                android:layout_marginLeft="140dp"
+                android:layout_marginRight="140dp"/>
+
+
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>
