@@ -10,7 +10,8 @@ $connect=mysql_connect($host, $username, $password)
 
 $dbselect=mysql_select_db($dbname,$connect) 
                     or die ("Sorry, unable to connect database");
-					
+
+$Game 	= $_POST["Game"];					
 $Round 	= $_POST["Round"];
 $Player1 = $_POST["Player1"];
 $Player2 = $_POST["Player2"];
@@ -19,8 +20,8 @@ $Player4 = $_POST["Player4"];
 $CreateUser 	= $_POST["CreateUser"];
 
 // Run the query
-$query = "insert into birdhistory (round, player1, player2, player3, player4, createUser)" .
-       			   " values ('$Round', '$Player1', '$Player2', '$Player3', '$Player4', '$CreateUser')";
+$query = "insert into birdhistory (game, round, player1, player2, player3, player4, createUser)" .
+       			   " values ('$Game', '$Round', '$Player1', '$Player2', '$Player3', '$Player4', '$CreateUser')";
 
 $result = mysql_query($query);
 
