@@ -1,8 +1,10 @@
 package com.example.myapplication;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.renderscript.Script;
@@ -16,7 +18,7 @@ import android.widget.TextView;
 public class Introduce extends AppCompatActivity {
 
     TextView playintro ,playintro2,playintro3,playintro4,playintro5;
-    Button usbu, jpbu, hkbu, twbu,back,home,people;
+    Button usbu, jpbu, hkbu, twbu,back,home,people,exit;
     String HkLink,TwLink,UsaLink,JpLink;
 
 
@@ -45,6 +47,7 @@ public class Introduce extends AppCompatActivity {
         back = findViewById(R.id.back);
         home = findViewById(R.id.home);
         people = findViewById(R.id.people);
+        exit = findViewById(R.id.exit);
 
         UsaLink = "<a href='https://zh.wikipedia.org/wiki/%E7%BE%8E%E5%9C%8B%E9%BA%BB%E5%B0%87%22%3E'>美國麻將的玩法詳細請按此</a>";
         JpLink = "<a href='https://zh.wikipedia.org/zh-hk/%E6%97%A5%E6%9C%AC%E9%BA%BB%E9%9B%80%22%3E'>日本麻雀的玩法詳細請按此</a>";
@@ -63,7 +66,7 @@ public class Introduce extends AppCompatActivity {
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(Introduce.this,MainActivity.class);
+                Intent i = new Intent(Introduce.this,RealSecondPage.class);
                 startActivity(i);
             }
         });
@@ -75,6 +78,31 @@ public class Introduce extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        exit.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View V){
+                AlertDialog dialog = new AlertDialog.Builder(Introduce.this)
+                        .setTitle("確認登出?")
+                        .setPositiveButton("是", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent i = new Intent(Introduce.this, LoginActivity.class);
+                                startActivity(i);
+                            }
+                        })
+                        .setNegativeButton("否", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+
+                            }
+                        })
+                        .show();
+
+            }
+        });
+
         usbu.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("SetTextI18n")
             @Override

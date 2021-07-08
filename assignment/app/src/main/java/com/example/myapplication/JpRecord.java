@@ -16,7 +16,7 @@ public class JpRecord extends AppCompatActivity {
 
     SharedPreferences jp;
     TextView Player1,Player2,Player3,Player4,recording1,recording2,recording3,recording4,numberRecord;
-    Button back,home,people;
+    Button back,home,people,exit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +37,7 @@ public class JpRecord extends AppCompatActivity {
         back = findViewById(R.id.back);
         home = findViewById(R.id.home);
         people = findViewById(R.id.people);
+        exit = findViewById(R.id.exit);
 
         Player1.setText(jp.getString("player1",""));
         Player2.setText(jp.getString("player2",""));
@@ -67,7 +68,7 @@ public class JpRecord extends AppCompatActivity {
                         .setPositiveButton("是", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Intent i = new Intent(JpRecord.this, MainActivity.class);
+                                Intent i = new Intent(JpRecord.this, RealSecondPage.class);
                                 startActivity(i);
                             }
                         })
@@ -87,6 +88,30 @@ public class JpRecord extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(JpRecord.this, setting.class);
                 startActivity(i);
+            }
+        });
+
+        exit.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View V){
+                AlertDialog dialog = new AlertDialog.Builder(JpRecord.this)
+                        .setTitle("確認登出?")
+                        .setPositiveButton("是", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent i = new Intent(JpRecord.this, LoginActivity.class);
+                                startActivity(i);
+                            }
+                        })
+                        .setNegativeButton("否", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+
+                            }
+                        })
+                        .show();
+
             }
         });
     }

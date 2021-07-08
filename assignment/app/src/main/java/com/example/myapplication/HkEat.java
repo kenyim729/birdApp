@@ -29,7 +29,7 @@ import java.net.URL;
 @SuppressWarnings("ALL")
 public class HkEat extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    Button button1,button2,button3,self,back,home,people;
+    Button button1,button2,button3,self,back,home,people,exit;
     int GameNo;
     int a;
     int Eaten;
@@ -44,6 +44,7 @@ public class HkEat extends AppCompatActivity implements AdapterView.OnItemSelect
     String NumberOfRecord;
     double self_total;
     String player1,player2,player3,player4,DataRecord1,DataRecord2,DataRecord3,DataRecord4,Marking;
+    SharedPreferences game;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +64,7 @@ public class HkEat extends AppCompatActivity implements AdapterView.OnItemSelect
         back = findViewById(R.id.back);
         home = findViewById(R.id.home);
         people = findViewById(R.id.people);
+        exit = findViewById(R.id.exit);
 
         SharedPreferences sp = getApplicationContext().getSharedPreferences("player_Id", Context.MODE_PRIVATE);
         SharedPreferences name = getApplicationContext().getSharedPreferences("player_name", Context.MODE_PRIVATE);
@@ -74,7 +76,7 @@ public class HkEat extends AppCompatActivity implements AdapterView.OnItemSelect
         SharedPreferences record2 = getApplicationContext().getSharedPreferences("RecordPlayer2", Context.MODE_PRIVATE);
         SharedPreferences record3 = getApplicationContext().getSharedPreferences("RecordPlayer3", Context.MODE_PRIVATE);
         SharedPreferences record4 = getApplicationContext().getSharedPreferences("RecordPlayer4", Context.MODE_PRIVATE);
-        SharedPreferences game = getApplicationContext().getSharedPreferences("game", Context.MODE_PRIVATE);
+        game = getApplicationContext().getSharedPreferences("game", Context.MODE_PRIVATE);
 
         //set game number
         GameNo = game.getInt("game",0);
@@ -123,9 +125,9 @@ public class HkEat extends AppCompatActivity implements AdapterView.OnItemSelect
 
 
         if(a == 1){
-            button1.setText("" + GameNo);
-            button2.setText("" + GameNo);
-            button3.setText("" + GameNo);
+            button1.setText(player2);
+            button2.setText(player3);
+            button3.setText(player4);
         }
 
         else if (a == 2){
@@ -168,7 +170,7 @@ public class HkEat extends AppCompatActivity implements AdapterView.OnItemSelect
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(HkEat.this, HkCounting.class);
+                Intent i = new Intent(HkEat.this, MainActivity.class);
                 startActivity(i);
             }
         });
@@ -182,7 +184,7 @@ public class HkEat extends AppCompatActivity implements AdapterView.OnItemSelect
                         .setPositiveButton("是", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Intent i = new Intent(HkEat.this, MainActivity.class);
+                                Intent i = new Intent(HkEat.this, RealSecondPage.class);
                                 startActivity(i);
                             }
                         })
@@ -202,6 +204,30 @@ public class HkEat extends AppCompatActivity implements AdapterView.OnItemSelect
             public void onClick(View v) {
                 Intent i = new Intent(HkEat.this, setting.class);
                 startActivity(i);
+            }
+        });
+
+        exit.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View V){
+                AlertDialog dialog = new AlertDialog.Builder(HkEat.this)
+                        .setTitle("確認登出?")
+                        .setPositiveButton("是", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent i = new Intent(HkEat.this, LoginActivity.class);
+                                startActivity(i);
+                            }
+                        })
+                        .setNegativeButton("否", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+
+                            }
+                        })
+                        .show();
+
             }
         });
 

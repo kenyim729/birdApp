@@ -17,7 +17,7 @@ import android.widget.TextView;
 public class HkCounting extends AppCompatActivity {
 
     SharedPreferences playerId;
-    Button playerOne,playerTwo,playerThree,playerFour,back,home,people;
+    Button playerOne,playerTwo,playerThree,playerFour,back,home,people,finish,exit;
     ImageButton record;
     int player1,player2,player3,player4;
     String count1,count2,count3,count4;
@@ -36,6 +36,8 @@ public class HkCounting extends AppCompatActivity {
         back = findViewById(R.id.back);
         home = findViewById(R.id.home);
         people = findViewById(R.id.people);
+        finish = findViewById(R.id.finish);
+        exit = findViewById(R.id.exit);
 
         //setting who eat in next page
         playerId = getSharedPreferences("player_Id", Context.MODE_PRIVATE);
@@ -112,7 +114,31 @@ public class HkCounting extends AppCompatActivity {
                         .setPositiveButton("是", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Intent i = new Intent(HkCounting.this, MainActivity.class);
+                                Intent i = new Intent(HkCounting.this, RealSecondPage.class);
+                                startActivity(i);
+                            }
+                        })
+                        .setNegativeButton("否", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+
+                            }
+                        })
+                        .show();
+            }
+        });
+
+        finish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog dialog = new AlertDialog.Builder(HkCounting.this)
+                        .setTitle("結束這一輪?")
+                        .setMessage("本局遊戲將會結束")
+                        .setPositiveButton("是", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent i = new Intent(HkCounting.this, secondPage.class);
                                 startActivity(i);
                             }
                         })
@@ -135,6 +161,29 @@ public class HkCounting extends AppCompatActivity {
             }
         });
 
+        exit.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View V){
+                AlertDialog dialog = new AlertDialog.Builder(HkCounting.this)
+                        .setTitle("確認登出?")
+                        .setPositiveButton("是", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent i = new Intent(HkCounting.this, LoginActivity.class);
+                                startActivity(i);
+                            }
+                        })
+                        .setNegativeButton("否", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+
+                            }
+                        })
+                        .show();
+
+            }
+        });
 
         playerOne.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -16,7 +16,7 @@ import android.widget.Toast;
 public class JpCounting extends AppCompatActivity {
 
     SharedPreferences jp;
-    Button playerOne,playerTwo,playerThree,playerFour,stand1,stand2,stand3,stand4,back,home,people;
+    Button playerOne,playerTwo,playerThree,playerFour,stand1,stand2,stand3,stand4,back,home,people,exit;
     ImageButton record;
     int player1,player2,player3,player4,AlreadyStand1,AlreadyStand2,AlreadyStand3,AlreadyStand4,editStand ;
     String count1,count2,count3,count4,strPlayer1,strPlayer2,strPlayer3,strPlayer4,play1,play2,play3,play4;
@@ -39,6 +39,7 @@ public class JpCounting extends AppCompatActivity {
         back = findViewById(R.id.back);
         home = findViewById(R.id.home);
         people = findViewById(R.id.people);
+        exit = findViewById(R.id.exit);
 
         jp = getApplication().getSharedPreferences("JpDetail", Context.MODE_PRIVATE);
 
@@ -130,7 +131,7 @@ public class JpCounting extends AppCompatActivity {
                         .setPositiveButton("是", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Intent i = new Intent(JpCounting.this, MainActivity.class);
+                                Intent i = new Intent(JpCounting.this, RealSecondPage.class);
                                 startActivity(i);
                             }
                         })
@@ -150,6 +151,30 @@ public class JpCounting extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(JpCounting.this, setting.class);
                 startActivity(i);
+            }
+        });
+
+        exit.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View V){
+                AlertDialog dialog = new AlertDialog.Builder(JpCounting.this)
+                        .setTitle("確認登出?")
+                        .setPositiveButton("是", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent i = new Intent(JpCounting.this, LoginActivity.class);
+                                startActivity(i);
+                            }
+                        })
+                        .setNegativeButton("否", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+
+                            }
+                        })
+                        .show();
+
             }
         });
 

@@ -22,7 +22,7 @@ public class JpFinish extends AppCompatActivity implements AdapterView.OnItemSel
 
     RadioGroup RG;
     RadioButton button,button2,button3,button4;
-    Button nextPlayer1,nextPlayer2,nextPlayer3,self,back,home,people ;
+    Button nextPlayer1,nextPlayer2,nextPlayer3,self,back,home,people,exit;
     SharedPreferences jp;
     int Eaten,score1,score2,score3,score4,roundNumber,winner,stand,mainer,TotalFu,StartCal = 1;
     int MainerStandPoint,MainerUnstandPoint,StandPoint,UnstandPoint,stand1,stand2,stand3,stand4;
@@ -57,6 +57,7 @@ public class JpFinish extends AppCompatActivity implements AdapterView.OnItemSel
         back = findViewById(R.id.back);
         home = findViewById(R.id.home);
         people = findViewById(R.id.people);
+        exit = findViewById(R.id.exit);
 
         //get stand or not
         stand1 = jp.getInt("stand1",0);
@@ -150,7 +151,7 @@ public class JpFinish extends AppCompatActivity implements AdapterView.OnItemSel
                         .setPositiveButton("是", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Intent i = new Intent(JpFinish.this, MainActivity.class);
+                                Intent i = new Intent(JpFinish.this, RealSecondPage.class);
                                 startActivity(i);
                             }
                         })
@@ -170,6 +171,30 @@ public class JpFinish extends AppCompatActivity implements AdapterView.OnItemSel
             public void onClick(View v) {
                 Intent i = new Intent(JpFinish.this, setting.class);
                 startActivity(i);
+            }
+        });
+
+        exit.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View V){
+                AlertDialog dialog = new AlertDialog.Builder(JpFinish.this)
+                        .setTitle("確認登出?")
+                        .setPositiveButton("是", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent i = new Intent(JpFinish.this, LoginActivity.class);
+                                startActivity(i);
+                            }
+                        })
+                        .setNegativeButton("否", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+
+                            }
+                        })
+                        .show();
+
             }
         });
 

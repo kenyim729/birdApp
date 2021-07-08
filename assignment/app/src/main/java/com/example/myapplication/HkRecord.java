@@ -34,11 +34,13 @@ import java.util.ArrayList;
 
 public class HkRecord extends AppCompatActivity {
 
-    SharedPreferences name,record1,record2,record3,record4,numberOfRecord;
-    Button back,home,people;
+    SharedPreferences name,record1,record2,record3,record4,numberOfRecord,gameNo;
+    Button back,home,people,exit;
     TextView Player1,Player2,Player3,Player4,recording1,recording2,recording3,recording4,numberRecord;
+    TextView total1,total2,total3,total4;
     ArrayList<CountRecord> countRecords;
     int a = 0;
+    int one,two,three,four;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,11 +53,19 @@ public class HkRecord extends AppCompatActivity {
         record3 = getApplication().getSharedPreferences("RecordPlayer3", Context.MODE_PRIVATE);
         record4 = getApplication().getSharedPreferences("RecordPlayer4", Context.MODE_PRIVATE);
         numberOfRecord = getApplication().getSharedPreferences("strRecord", Context.MODE_PRIVATE);
+        gameNo = getApplication().getSharedPreferences("game",Context.MODE_PRIVATE);
+        SharedPreferences showMoney = getApplicationContext().getSharedPreferences("moneyCounting", Context.MODE_PRIVATE);
+
+
 
         Player1 = findViewById(R.id.player1);
         Player2 = findViewById(R.id.player2);
         Player3 = findViewById(R.id.player3);
         Player4 = findViewById(R.id.player4);
+        total1 = findViewById(R.id.total1);
+        total2 = findViewById(R.id.total2);
+        total3 = findViewById(R.id.total3);
+        total4 = findViewById(R.id.total4);
         numberRecord = findViewById(R.id.recordNumber);
         recording1 = findViewById(R.id.record1);
         recording2 = findViewById(R.id.record2);
@@ -64,12 +74,39 @@ public class HkRecord extends AppCompatActivity {
         back = findViewById(R.id.back);
         home = findViewById(R.id.home);
         people = findViewById(R.id.people);
+        exit = findViewById(R.id.exit);
 
 
         Player1.setText(name.getString("player1",""));
         Player2.setText(name.getString("player2",""));
         Player3.setText(name.getString("player3",""));
         Player4.setText(name.getString("player4",""));
+
+
+
+        //get money
+        total1.setText("" + showMoney.getInt("first" , 0));
+        total2.setText("" + showMoney.getInt("second" , 0));
+        total3.setText("" + showMoney.getInt("third" , 0));
+        total4.setText("" + showMoney.getInt("fourth" , 0));
+
+        one = showMoney.getInt("first" , 0);
+        two = showMoney.getInt("second" , 0);
+        three = showMoney.getInt("third" , 0);
+        four = showMoney.getInt("fourth" , 0);
+
+        if(one > two && one > three && one > four){
+            total1.setBackgroundResource(R.drawable.crown2);
+        }
+
+        if(two > one  && two > three && two > four)
+            total2.setBackgroundResource(R.drawable.crown2);
+
+        if(three > one  && three > two && three > four)
+            total3.setBackgroundResource(R.drawable.crown2);
+
+        if(four > one  && four > two && four > three)
+            total4.setBackgroundResource(R.drawable.crown2);
 
 //        recording1.setText(record1.getString("recording1",""));
 //        recording2.setText(record2.getString("recording2",""));
@@ -96,7 +133,7 @@ public class HkRecord extends AppCompatActivity {
                         .setPositiveButton("是", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Intent i = new Intent(HkRecord.this, MainActivity.class);
+                                Intent i = new Intent(HkRecord.this, RealSecondPage.class);
                                 startActivity(i);
                             }
                         })
@@ -119,6 +156,29 @@ public class HkRecord extends AppCompatActivity {
             }
         });
 
+        exit.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View V){
+                AlertDialog dialog = new AlertDialog.Builder(HkRecord.this)
+                        .setTitle("確認登出?")
+                        .setPositiveButton("是", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent i = new Intent(HkRecord.this, LoginActivity.class);
+                                startActivity(i);
+                            }
+                        })
+                        .setNegativeButton("否", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+
+                            }
+                        })
+                        .show();
+
+            }
+        });
     }
 
     private void getData() {
@@ -209,14 +269,9 @@ public class HkRecord extends AppCompatActivity {
                 String r4 = "";
                 String num = "";
 
-                for(int i = 0; i < countRecords.size() ; i++ ){
-
-                    if(countRecords.get(i).getGame() > a)
-                        a = countRecords.get(i).getGame();
-                }
 
                 for (int i = 0; i < countRecords.size() ; i++ ) {
-                    if(countRecords.get(i).getGame() == a) {
+                    if(countRecords.get(i).getGame() == gameNo.getInt("game",0)) {
                         r1 += countRecords.get(i).getPlayer1() + "\n\n";
                         r2 += countRecords.get(i).getPlayer2() + "\n\n";
                         r3 += countRecords.get(i).getPlayer3() + "\n\n";
@@ -231,7 +286,6 @@ public class HkRecord extends AppCompatActivity {
                 recording4.setText(r4);
                 numberRecord.setText(num);
 
-                Toast.makeText(getApplicationContext(), retStr, Toast.LENGTH_LONG).show();
 
             }
         }

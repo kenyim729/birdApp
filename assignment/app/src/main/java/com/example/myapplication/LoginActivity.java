@@ -64,7 +64,7 @@ public class LoginActivity extends AppCompatActivity {
                         SharedPreferences.Editor user_Id = userId.edit();
                         user_Id.putString("username", usernameText);
                         user_Id.apply();
-                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        Intent intent = new Intent(LoginActivity.this, RealSecondPage.class);
                         startActivity ( intent );
                         return;
                     }

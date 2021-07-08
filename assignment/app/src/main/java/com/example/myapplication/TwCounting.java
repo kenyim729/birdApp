@@ -17,7 +17,7 @@ import android.widget.TextView;
 public class TwCounting extends AppCompatActivity {
 
     SharedPreferences playerId,name,ShowMoney;
-    Button playerOne,playerTwo,playerThree,playerFour,back,home,people;
+    Button playerOne,playerTwo,playerThree,playerFour,back,home,people,finish,exit;
     ImageButton GoCouting;
     int player1,player2,player3,player4;
 
@@ -41,6 +41,8 @@ public class TwCounting extends AppCompatActivity {
         back = findViewById(R.id.back);
         home = findViewById(R.id.home);
         people = findViewById(R.id.people);
+        finish = findViewById(R.id.finish);
+        exit = findViewById(R.id.exit);
 
         player1 = ShowMoney.getInt("first" , 0);
         player2 = ShowMoney.getInt("second" , 0);
@@ -92,7 +94,7 @@ public class TwCounting extends AppCompatActivity {
                         .setPositiveButton("是", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Intent i = new Intent(TwCounting.this, MainActivity.class);
+                                Intent i = new Intent(TwCounting.this, RealSecondPage.class);
                                 startActivity(i);
                             }
                         })
@@ -112,6 +114,54 @@ public class TwCounting extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(TwCounting.this, setting.class);
                 startActivity(i);
+            }
+        });
+
+        finish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog dialog = new AlertDialog.Builder(TwCounting.this)
+                        .setTitle("結束這一輪?")
+                        .setMessage("本局遊戲將會結束")
+                        .setPositiveButton("是", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent i = new Intent(TwCounting.this, secondPage.class);
+                                startActivity(i);
+                            }
+                        })
+                        .setNegativeButton("否", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+
+                            }
+                        })
+                        .show();
+            }
+        });
+
+        exit.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View V){
+                AlertDialog dialog = new AlertDialog.Builder(TwCounting.this)
+                        .setTitle("確認登出?")
+                        .setPositiveButton("是", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent i = new Intent(TwCounting.this, LoginActivity.class);
+                                startActivity(i);
+                            }
+                        })
+                        .setNegativeButton("否", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+
+                            }
+                        })
+                        .show();
+
             }
         });
 

@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 public class UsaCounting extends AppCompatActivity {
 
-    Button playerOne,playerTwo,playerThree,playerFour,back,home,people;
+    Button playerOne,playerTwo,playerThree,playerFour,back,home,people,finish,exit;
     ImageButton record;
     SharedPreferences winner,name,score;
     int score1,score2,score3,score4;
@@ -37,6 +37,8 @@ public class UsaCounting extends AppCompatActivity {
         back = findViewById(R.id.back);
         home = findViewById(R.id.home);
         people = findViewById(R.id.people);
+        finish = findViewById(R.id.finish);
+        exit = findViewById(R.id.exit);
 
 
         name = getApplication().getSharedPreferences("UsaPlayer",Context.MODE_PRIVATE);
@@ -94,7 +96,7 @@ public class UsaCounting extends AppCompatActivity {
                         .setPositiveButton("是", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Intent i = new Intent(UsaCounting.this, MainActivity.class);
+                                Intent i = new Intent(UsaCounting.this, RealSecondPage.class);
                                 startActivity(i);
                             }
                         })
@@ -114,6 +116,54 @@ public class UsaCounting extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(UsaCounting.this, setting.class);
                 startActivity(i);
+            }
+        });
+
+        exit.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View V){
+                AlertDialog dialog = new AlertDialog.Builder(UsaCounting.this)
+                        .setTitle("確認登出?")
+                        .setPositiveButton("是", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent i = new Intent(UsaCounting.this, LoginActivity.class);
+                                startActivity(i);
+                            }
+                        })
+                        .setNegativeButton("否", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+
+                            }
+                        })
+                        .show();
+
+            }
+        });
+
+        finish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog dialog = new AlertDialog.Builder(UsaCounting.this)
+                        .setTitle("結束這一輪?")
+                        .setMessage("本局遊戲將會結束")
+                        .setPositiveButton("是", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent i = new Intent(UsaCounting.this, secondPage.class);
+                                startActivity(i);
+                            }
+                        })
+                        .setNegativeButton("否", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+
+                            }
+                        })
+                        .show();
             }
         });
 

@@ -35,10 +35,10 @@ import java.util.ArrayList;
 @SuppressWarnings("ALL")
 public class secondPage extends AppCompatActivity {
 
-    Button hk,jp,tw,usa,back,home,people;
+    Button hk,jp,tw,usa,back,home,people,exit;
     SharedPreferences game;
     ArrayList<CountRecord> countRecords;
-    int a;
+    int a = 0;
 
 
     @Override
@@ -58,6 +58,7 @@ public class secondPage extends AppCompatActivity {
         back = findViewById(R.id.back);
         home = findViewById(R.id.home);
         people = findViewById(R.id.people);
+        exit = findViewById(R.id.exit);
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,7 +71,7 @@ public class secondPage extends AppCompatActivity {
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(secondPage.this,MainActivity.class);
+                Intent i = new Intent(secondPage.this,RealSecondPage.class);
                 startActivity(i);
             }
         });
@@ -115,6 +116,29 @@ public class secondPage extends AppCompatActivity {
             }
         });
 
+        exit.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View V){
+                AlertDialog dialog = new AlertDialog.Builder(secondPage.this)
+                        .setTitle("確認登出?")
+                        .setPositiveButton("是", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent i = new Intent(secondPage.this, LoginActivity.class);
+                                startActivity(i);
+                            }
+                        })
+                        .setNegativeButton("否", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+
+                            }
+                        })
+                        .show();
+
+            }
+        });
 
 
 
@@ -203,8 +227,7 @@ public class secondPage extends AppCompatActivity {
 
             SharedPreferences.Editor gameNumber = game.edit();
             if( countRecords == null ){
-                a = 1;
-                hk.setText("" + a);
+                a = 0;
                 gameNumber.putInt("game",a);
                 gameNumber.commit();
             }
@@ -212,7 +235,6 @@ public class secondPage extends AppCompatActivity {
             if ( countRecords != null && countRecords.size() > 0 ) {
                 for(int i = 0 ; i < countRecords.size(); i++){
                     if(countRecords.get(i).getGame() == a){
-                        hk.setText("banana");
                         a = countRecords.get(i).getGame() + 1;
                     }
                 }

@@ -22,6 +22,7 @@ public class RealSecondPage extends AppCompatActivity {
         method = findViewById(R.id.method);
         discuss = findViewById(R.id.discuss);
 
+
         button1.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View V){
@@ -53,5 +54,7 @@ public class RealSecondPage extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+
     }
 }

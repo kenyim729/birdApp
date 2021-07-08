@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.RadialGradient;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,13 +17,23 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 public class TwFinish extends AppCompatActivity {
 
     RadioGroup RG;
     RadioButton button,button2,button3,button4;
-    Button eatPlayer1,eatPlayer2,eatPlayer3,self,back,home,people;
+    Button eatPlayer1,eatPlayer2,eatPlayer3,self,back,home,people,exit;
     SharedPreferences name,id,base,MoneyOfPoint,counting;
     int GetId,mainer,Totalpoint,baseMoney,point,player1Point,player2Point,player3Point,player4Point,Twcounting,BaseAddPoint;
+    int GameNo;
     String player1,player2,player3,player4,changeMoney,DataRecord1,DataRecord2,DataRecord3,DataRecord4,NumberOfRecord;
     EditText Total;
 
@@ -44,6 +55,7 @@ public class TwFinish extends AppCompatActivity {
         back = findViewById(R.id.back);
         home = findViewById(R.id.home);
         people = findViewById(R.id.people);
+        exit = findViewById(R.id.exit);
 
 
 
@@ -58,6 +70,15 @@ public class TwFinish extends AppCompatActivity {
         SharedPreferences record2 = getApplicationContext().getSharedPreferences("TwRecordPlayer2", Context.MODE_PRIVATE);
         SharedPreferences record3 = getApplicationContext().getSharedPreferences("TwRecordPlayer3", Context.MODE_PRIVATE);
         SharedPreferences record4 = getApplicationContext().getSharedPreferences("TwRecordPlayer4", Context.MODE_PRIVATE);
+        SharedPreferences game = getApplicationContext().getSharedPreferences("game", Context.MODE_PRIVATE);
+
+        //set game number
+        GameNo = game.getInt("game",0);
+
+        //get user
+        SharedPreferences userId = getApplicationContext().getSharedPreferences("user_Id", Context.MODE_PRIVATE);
+        String username = userId.getString("username","");
+        System.out.println("username: " + username);
 
         //get player record detail
         DataRecord1 = record1.getString("recording1","");
@@ -152,7 +173,7 @@ public class TwFinish extends AppCompatActivity {
                         .setPositiveButton("是", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Intent i = new Intent(TwFinish.this, MainActivity.class);
+                                Intent i = new Intent(TwFinish.this, RealSecondPage.class);
                                 startActivity(i);
                             }
                         })
@@ -172,6 +193,30 @@ public class TwFinish extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(TwFinish.this, setting.class);
                 startActivity(i);
+            }
+        });
+
+        exit.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View V){
+                AlertDialog dialog = new AlertDialog.Builder(TwFinish.this)
+                        .setTitle("確認登出?")
+                        .setPositiveButton("是", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent i = new Intent(TwFinish.this, LoginActivity.class);
+                                startActivity(i);
+                            }
+                        })
+                        .setNegativeButton("否", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+
+                            }
+                        })
+                        .show();
+
             }
         });
 
@@ -220,6 +265,8 @@ public class TwFinish extends AppCompatActivity {
                     calculate.putInt("first",player1Point);
                     calculate.putInt("second", player2Point);
 
+                    postData(GameNo, Twcounting, BaseAddPoint,BaseAddPoint * -1,0,0, username);
+
                     DataRecord1 += "+" + BaseAddPoint +"\n\n";
                     DataRecord2 += "-" + BaseAddPoint+"\n\n";
                     DataRecord3 += "0\n\n";
@@ -235,6 +282,7 @@ public class TwFinish extends AppCompatActivity {
                     CountingNumber.putInt("counting",Twcounting);
 
 
+
                     FirstRecord.commit();
                     SecondRecord.commit();
                     ThirdRecord.commit();
@@ -248,6 +296,8 @@ public class TwFinish extends AppCompatActivity {
                 if(GetId == 2 && Totalpoint != -1){
                     player2Point = player2Point + baseMoney + point * Totalpoint;
                     player1Point = player1Point - baseMoney - point * Totalpoint;
+
+                    postData(GameNo, Twcounting, BaseAddPoint * -1,BaseAddPoint,0,0, username);
 
                     calculate.putInt("first",player1Point);
                     calculate.putInt("second", player2Point);
@@ -266,7 +316,6 @@ public class TwFinish extends AppCompatActivity {
                     RecordNumber.putString("recording",NumberOfRecord);
                     CountingNumber.putInt("counting",Twcounting);
 
-
                     FirstRecord.commit();
                     SecondRecord.commit();
                     ThirdRecord.commit();
@@ -283,6 +332,8 @@ public class TwFinish extends AppCompatActivity {
 
                     calculate.putInt("first",player1Point);
                     calculate.putInt("third", player3Point);
+
+                    postData(GameNo, Twcounting, BaseAddPoint * -1,0,BaseAddPoint,0, username);
 
                     DataRecord1 += "-" + BaseAddPoint +"\n\n";
                     DataRecord2 += "0\n\n";
@@ -316,6 +367,8 @@ public class TwFinish extends AppCompatActivity {
                     calculate.putInt("first",player1Point);
                     calculate.putInt("fourth", player4Point);
 
+                    postData(GameNo, Twcounting, BaseAddPoint * -1,0,0,BaseAddPoint, username);
+
                     DataRecord1 += "-" + BaseAddPoint +"\n\n";
                     DataRecord2 += "0\n\n";
                     DataRecord3 += "0\n\n";
@@ -329,7 +382,6 @@ public class TwFinish extends AppCompatActivity {
                     FourthRecord.putString("recording4",DataRecord4);
                     RecordNumber.putString("recording",NumberOfRecord);
                     CountingNumber.putInt("counting",Twcounting);
-
 
                     FirstRecord.commit();
                     SecondRecord.commit();
@@ -372,6 +424,8 @@ public class TwFinish extends AppCompatActivity {
                     calculate.putInt("first",player1Point);
                     calculate.putInt("third", player3Point);
 
+                    postData(GameNo, Twcounting, BaseAddPoint ,0,BaseAddPoint * -1,0, username);
+
                     DataRecord1 += "+" + BaseAddPoint +"\n\n";
                     DataRecord2 += "0\n\n";
                     DataRecord3 += "-" + BaseAddPoint+"\n\n";
@@ -403,6 +457,9 @@ public class TwFinish extends AppCompatActivity {
 
                     calculate.putInt("third",player3Point);
                     calculate.putInt("second", player2Point);
+
+                    postData(GameNo, Twcounting, 0 ,BaseAddPoint,BaseAddPoint  * -1,0, username);
+
 
                     DataRecord1 += "0\n\n";
                     DataRecord2 += "+" + BaseAddPoint +"\n\n";
@@ -436,6 +493,9 @@ public class TwFinish extends AppCompatActivity {
                     calculate.putInt("third",player3Point);
                     calculate.putInt("second", player2Point);
 
+                    postData(GameNo, Twcounting, 0 ,BaseAddPoint * -1,BaseAddPoint ,0, username);
+
+
                     DataRecord1 += "0\n\n";
                     DataRecord2 += "-" + BaseAddPoint +"\n\n";
                     DataRecord3 += "+" + BaseAddPoint+"\n\n";
@@ -467,6 +527,8 @@ public class TwFinish extends AppCompatActivity {
 
                     calculate.putInt("fourth",player4Point);
                     calculate.putInt("second", player2Point);
+
+                    postData(GameNo, Twcounting, 0 ,0,BaseAddPoint * -1,BaseAddPoint, username);
 
                     DataRecord1 += "0\n\n";
                     DataRecord2 += "-" + BaseAddPoint +"\n\n";
@@ -521,6 +583,9 @@ public class TwFinish extends AppCompatActivity {
                     player1Point = player1Point + baseMoney + point * Totalpoint;
                     player4Point = player4Point - baseMoney - point * Totalpoint;
 
+                    postData(GameNo, Twcounting, BaseAddPoint ,0, 0,BaseAddPoint * -1, username);
+
+
                     calculate.putInt("first",player1Point);
                     calculate.putInt("fourth", player4Point);
 
@@ -556,6 +621,8 @@ public class TwFinish extends AppCompatActivity {
                     calculate.putInt("fourth",player4Point);
                     calculate.putInt("second", player2Point);
 
+                    postData(GameNo, Twcounting, 0 ,BaseAddPoint, 0,BaseAddPoint * -1, username);
+
                     DataRecord1 += "0\n\n";
                     DataRecord2 += "+" + BaseAddPoint+"\n\n";
                     DataRecord3 += "0\n\n";
@@ -588,6 +655,8 @@ public class TwFinish extends AppCompatActivity {
                     calculate.putInt("third",player3Point);
                     calculate.putInt("fourth", player4Point);
 
+                    postData(GameNo, Twcounting, 0 ,0, BaseAddPoint,BaseAddPoint * -1, username);
+
                     DataRecord1 += "0\n\n";
                     DataRecord2 += "0\n\n";
                     DataRecord3 += "+" + BaseAddPoint+"\n\n";
@@ -619,6 +688,8 @@ public class TwFinish extends AppCompatActivity {
 
                     calculate.putInt("fourth",player4Point);
                     calculate.putInt("third", player3Point);
+
+                    postData(GameNo, Twcounting, 0 ,0, BaseAddPoint * -1, BaseAddPoint, username);
 
                     DataRecord1 += "0\n\n";
                     DataRecord2 += "0\n\n";
@@ -688,6 +759,8 @@ public class TwFinish extends AppCompatActivity {
                         calculate.putInt("fourth", player4Point);
                         calculate.putInt("third", player3Point);
 
+                        postData(GameNo, Twcounting, self_cost ,SeperateCost * -1, SeperateCost * -1, SeperateCost * -1, username);
+
                         DataRecord1 += "+" + (int)self_cost +"\n\n";
                         DataRecord2 += "-" + SeperateCost+"\n\n";
                         DataRecord3 += "-" + SeperateCost+"\n\n";
@@ -725,6 +798,8 @@ public class TwFinish extends AppCompatActivity {
                         calculate.putInt("fourth", player4Point);
                         calculate.putInt("third", player3Point);
 
+                        postData(GameNo, Twcounting, self_cost + point ,(SeperateCost + point) * -1, SeperateCost * -1, SeperateCost * -1, username);
+
                         DataRecord1 += "+" + AddingPoint +"\n\n";
                         DataRecord2 += "-" + WayAddingPoint +"\n\n";
                         DataRecord3 += "-" + SeperateCost+"\n\n";
@@ -761,6 +836,9 @@ public class TwFinish extends AppCompatActivity {
                         calculate.putInt("fourth", player4Point);
                         calculate.putInt("third", player3Point);
 
+                        postData(GameNo, Twcounting, self_cost + point ,SeperateCost  * -1, (SeperateCost + point) * -1, SeperateCost * -1, username);
+
+
                         DataRecord1 += "+" + AddingPoint +"\n\n";
                         DataRecord2 += "-" + SeperateCost+"\n\n";
                         DataRecord3 += "-" + WayAddingPoint +"\n\n";
@@ -795,6 +873,8 @@ public class TwFinish extends AppCompatActivity {
                         calculate.putInt("second", player2Point);
                         calculate.putInt("fourth", player4Point);
                         calculate.putInt("third", player3Point);
+
+                        postData(GameNo, Twcounting, self_cost + point ,SeperateCost  * -1, SeperateCost * -1, (SeperateCost + point) * -1, username);
 
                         DataRecord1 += "+" + AddingPoint +"\n\n";
                         DataRecord2 += "-" + SeperateCost+"\n\n";
@@ -834,6 +914,8 @@ public class TwFinish extends AppCompatActivity {
                         calculate.putInt("fourth", player4Point);
                         calculate.putInt("third", player3Point);
 
+                        postData(GameNo, Twcounting, SeperateCost * -1 ,self_cost, SeperateCost * -1, SeperateCost  * -1, username);
+
                         DataRecord1 += "-" + (int)self_cost +"\n\n";
                         DataRecord2 += "+" + SeperateCost+"\n\n";
                         DataRecord3 += "-" + SeperateCost+"\n\n";
@@ -871,6 +953,8 @@ public class TwFinish extends AppCompatActivity {
                         calculate.putInt("fourth", player4Point);
                         calculate.putInt("third", player3Point);
 
+                        postData(GameNo, Twcounting, (SeperateCost + point) * -1 ,self_cost + point, SeperateCost * -1, SeperateCost  * -1, username);
+
                         DataRecord1 += "-" + WayAddingPoint +"\n\n";
                         DataRecord2 += "+" + AddingPoint+"\n\n";
                         DataRecord3 += "-" + SeperateCost+"\n\n";
@@ -907,6 +991,8 @@ public class TwFinish extends AppCompatActivity {
                         calculate.putInt("fourth", player4Point);
                         calculate.putInt("third", player3Point);
 
+                        postData(GameNo, Twcounting, SeperateCost * -1 ,self_cost + point, (SeperateCost + point) * -1, SeperateCost  * -1, username);
+
                         DataRecord1 += "-" + SeperateCost +"\n\n";
                         DataRecord2 += "+" + AddingPoint+"\n\n";
                         DataRecord3 += "-" + WayAddingPoint +"\n\n";
@@ -941,6 +1027,8 @@ public class TwFinish extends AppCompatActivity {
                         calculate.putInt("second", player2Point);
                         calculate.putInt("fourth", player4Point);
                         calculate.putInt("third", player3Point);
+
+                        postData(GameNo, Twcounting, SeperateCost * -1 ,self_cost + point, SeperateCost * -1, (SeperateCost + point)  * -1, username);
 
                         DataRecord1 += "-" + SeperateCost +"\n\n";
                         DataRecord2 += "+" + AddingPoint+"\n\n";
@@ -980,6 +1068,8 @@ public class TwFinish extends AppCompatActivity {
                         calculate.putInt("fourth", player4Point);
                         calculate.putInt("third", player3Point);
 
+                        postData(GameNo, Twcounting, SeperateCost * -1 ,SeperateCost * -1, self_cost, SeperateCost  * -1, username);
+
                         DataRecord1 += "-" + SeperateCost +"\n\n";
                         DataRecord2 += "-" + SeperateCost +"\n\n";
                         DataRecord3 += "+" + (int)self_cost +"\n\n";
@@ -1017,6 +1107,8 @@ public class TwFinish extends AppCompatActivity {
                         calculate.putInt("fourth", player4Point);
                         calculate.putInt("third", player3Point);
 
+                        postData(GameNo, Twcounting, (SeperateCost + point) * -1 ,SeperateCost * -1, self_cost + point, SeperateCost * -1, username);
+
                         DataRecord1 += "-" + WayAddingPoint +"\n\n";
                         DataRecord2 += "-" + SeperateCost +"\n\n";
                         DataRecord3 += "+" + AddingPoint +"\n\n";
@@ -1053,6 +1145,8 @@ public class TwFinish extends AppCompatActivity {
                         calculate.putInt("fourth", player4Point);
                         calculate.putInt("third", player3Point);
 
+                        postData(GameNo, Twcounting, SeperateCost * -1 ,(SeperateCost + point) * -1, self_cost + point, SeperateCost * -1, username);
+
                         DataRecord1 += "-" + SeperateCost +"\n\n";
                         DataRecord2 += "-" + WayAddingPoint +"\n\n";
                         DataRecord3 += "+" + AddingPoint +"\n\n";
@@ -1087,6 +1181,8 @@ public class TwFinish extends AppCompatActivity {
                         calculate.putInt("second", player2Point);
                         calculate.putInt("fourth", player4Point);
                         calculate.putInt("third", player3Point);
+
+                        postData(GameNo, Twcounting, SeperateCost * -1 ,SeperateCost * -1, self_cost + point, (SeperateCost + point) * -1, username);
 
                         DataRecord1 += "-" + SeperateCost +"\n\n";
                         DataRecord2 += "-" + SeperateCost +"\n\n";
@@ -1126,6 +1222,8 @@ public class TwFinish extends AppCompatActivity {
                         calculate.putInt("fourth", player4Point);
                         calculate.putInt("third", player3Point);
 
+                        postData(GameNo, Twcounting, SeperateCost * -1 ,SeperateCost * -1,SeperateCost * -1, self_cost, username);
+
                         DataRecord1 += "-" + SeperateCost +"\n\n";
                         DataRecord2 += "-" + SeperateCost +"\n\n";
                         DataRecord3 += "-" + SeperateCost +"\n\n";
@@ -1163,6 +1261,9 @@ public class TwFinish extends AppCompatActivity {
                         calculate.putInt("fourth", player4Point);
                         calculate.putInt("third", player3Point);
 
+                        postData(GameNo, Twcounting, (SeperateCost + point) * -1 ,SeperateCost * -1,SeperateCost * -1, self_cost + point, username);
+
+
                         DataRecord1 += "-" + WayAddingPoint +"\n\n";
                         DataRecord2 += "-" + SeperateCost +"\n\n";
                         DataRecord3 += "-" + SeperateCost +"\n\n";
@@ -1199,6 +1300,8 @@ public class TwFinish extends AppCompatActivity {
                         calculate.putInt("fourth", player4Point);
                         calculate.putInt("third", player3Point);
 
+                        postData(GameNo, Twcounting, SeperateCost * -1 ,(SeperateCost + point) * -1,SeperateCost * -1, self_cost + point, username);
+
                         DataRecord1 += "-" + SeperateCost +"\n\n";
                         DataRecord2 += "-" + WayAddingPoint +"\n\n";
                         DataRecord3 += "-" + SeperateCost +"\n\n";
@@ -1234,6 +1337,8 @@ public class TwFinish extends AppCompatActivity {
                         calculate.putInt("fourth", player4Point);
                         calculate.putInt("third", player3Point);
 
+                        postData(GameNo, Twcounting, SeperateCost * -1 ,SeperateCost * -1,(SeperateCost + point) * -1, self_cost + point, username);
+
                         DataRecord1 += "-" + SeperateCost +"\n\n";
                         DataRecord2 += "-" + SeperateCost +"\n\n";
                         DataRecord3 += "-" + WayAddingPoint +"\n\n";
@@ -1267,4 +1372,86 @@ public class TwFinish extends AppCompatActivity {
             }
         });
     }
+
+    private void postData (int game, int round, double player1, double player2, double player3, double player4, String username) {
+
+
+        String postParams = "Game=" + game + " & "
+                + "Round=" + round + " & "
+                + "Player1=" + player1 + " & "
+                + "Player2=" + player2 + " & "
+                + "Player3=" + player3 + " & "
+                + "Player4=" + player4 + " & "
+                + "CreateUser=" + username
+                ;
+
+        System.out.println (postParams);
+
+        String urlString = "http://10.0.2.2:8080/lab_bird_php/postBird.php";
+        MyAsynTask newTask = new MyAsynTask();
+        newTask.execute(urlString, postParams);
+    }
+
+    private String postHttpURLConnection (String urlStr, String postParams) {
+
+        String response = "";
+
+        InputStream inputStream = null;
+        HttpURLConnection urlConnection = null;
+
+        try {
+            URL url = new URL(urlStr);
+
+            urlConnection = (HttpURLConnection) url.openConnection();
+            urlConnection.setRequestMethod("POST");
+            urlConnection.connect();
+
+            OutputStream outputStream = urlConnection.getOutputStream();
+            DataOutputStream dataOutputStream = new DataOutputStream(outputStream);
+            dataOutputStream.writeBytes(postParams);
+
+            dataOutputStream.flush();
+            dataOutputStream.close();
+
+            int responseCode = urlConnection.getResponseCode();
+
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                String line;
+                BufferedReader bufferedReader =
+                        new BufferedReader(new InputStreamReader((urlConnection.getInputStream())));
+                while ((line = bufferedReader.readLine()) != null) {
+                    response += line;
+                }
+            } else {
+                response = "";
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return response;
+    }
+
+
+    private class MyAsynTask extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            String retStr = postHttpURLConnection(params[0], params[1]);
+            return retStr;
+        }
+
+        @Override
+        protected void onPostExecute(String retStr) {
+            super.onPostExecute(retStr);
+
+            System.out.println ("===============================");
+            System.out.println(retStr);
+
+//            status_TextView.setText(retStr);
+            Toast.makeText(getApplicationContext(), retStr, Toast.LENGTH_LONG).show();
+        }
+
+    } // MyAsynTask
 }
