@@ -20,44 +20,48 @@
             android:layout_marginRight="50dp"
             android:layout_marginTop="15dp"
             android:id="@+id/menu"/>
-
         <Button
             android:id="@+id/back"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@drawable/back"
             android:layout_marginTop="15dp"
-            android:layout_marginLeft="70dp"
-
-            />
+            android:layout_marginLeft="60dp" />
         <Button
             android:id="@+id/home"
             android:layout_width="49dp"
             android:layout_height="49dp"
             android:background="@drawable/home"
             android:layout_marginTop="15dp"
-            android:layout_marginLeft="180dp"
-            />
+            android:layout_marginLeft="125dp" />
         <Button
             android:id="@+id/people"
             android:layout_width="49dp"
             android:layout_height="49dp"
             android:background="@drawable/people"
             android:layout_marginTop="15dp"
-            android:layout_marginLeft="290dp"
-            />
+            android:layout_marginLeft="190dp" />
+        <Button
+            android:id="@+id/exit"
+            android:layout_width="45dp"
+            android:layout_height="49dp"
+            android:background="@drawable/exit"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="255dp" />
     </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:orientation="horizontal"
-        android:gravity="center">
+        android:gravity="center"
+        android:layout_marginHorizontal="50dp">
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/logo"/>
+            android:src="@drawable/logo"
+            />
     </LinearLayout>
 
     <LinearLayout
@@ -81,7 +85,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="輸入玩家資料"
-                android:textSize="18sp"
+                android:textSize="20sp"
                 android:textStyle="bold"/>
             <EditText
                 android:id="@+id/player1"
@@ -93,7 +97,9 @@
                 android:layout_marginRight="80dp"
                 android:hint="玩家1:"
                 android:textSize="18sp"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:layout_marginTop="15dp"
+                />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -158,13 +164,10 @@
                 android:id="@+id/start"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="125dp"
-                android:layout_marginLeft="125dp"
-
-                android:layout_marginEnd="125dp"
-                android:layout_marginRight="125dp"
                 android:text="開始"
+                android:layout_marginHorizontal="100dp"
                 android:textSize="25sp"
+                android:textStyle="bold"
                 android:background="@drawable/doneb"
                 android:layout_weight="1"/>
 

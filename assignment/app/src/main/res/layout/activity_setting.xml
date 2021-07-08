@@ -15,14 +15,15 @@
         android:layout_width="match_parent"
         android:layout_height="0px"
         android:background="@drawable/logo"
-        android:layout_weight="4"/>
+        android:layout_weight="3"
+        android:layout_marginHorizontal="40dp"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/bgww"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
-
+        android:layout_marginTop="30dp"
         >
         <TextView
             android:layout_width="match_parent"
@@ -34,8 +35,8 @@
             />
     </LinearLayout>
     <Button
-        android:layout_width="180dp"
-        android:layout_height="0px"
+        android:layout_width="150dp"
+        android:layout_height="20dp"
         android:layout_weight="1"
         android:text="贊助"
         android:layout_marginTop="30dp"

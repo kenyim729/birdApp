@@ -16,42 +16,45 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@drawable/menub"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="45dp"
             android:layout_marginTop="15dp"
             android:id="@+id/menu"/>
-
         <Button
             android:id="@+id/back"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@drawable/back"
             android:layout_marginTop="15dp"
-            android:layout_marginLeft="70dp"
-
-            />
+            android:layout_marginLeft="60dp" />
         <Button
             android:id="@+id/home"
             android:layout_width="49dp"
             android:layout_height="49dp"
             android:background="@drawable/home"
             android:layout_marginTop="15dp"
-            android:layout_marginLeft="180dp"
-            />
+            android:layout_marginLeft="125dp" />
         <Button
             android:id="@+id/people"
             android:layout_width="49dp"
             android:layout_height="49dp"
             android:background="@drawable/people"
             android:layout_marginTop="15dp"
-            android:layout_marginLeft="290dp"
-            />
+            android:layout_marginLeft="190dp" />
+        <Button
+            android:id="@+id/exit"
+            android:layout_width="45dp"
+            android:layout_height="49dp"
+            android:background="@drawable/exit"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="255dp" />
     </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="130dp"
         android:orientation="horizontal"
+        android:layout_marginHorizontal="50dp"
         android:gravity="center">
 
         <ImageView
@@ -67,27 +70,26 @@
         android:orientation="vertical"
         android:gravity="center"
         >
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginTop="20dp"
             >
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                />
+                android:layout_weight="1" />
 
             <TextView
-                android:gravity="center"
                 android:id="@+id/player1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:textSize="25sp"
-                />
+                android:gravity="center"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/player2"
@@ -95,8 +97,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
                 android:gravity="center"
-                android:textSize="25sp"
-                />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/player3"
@@ -104,8 +105,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
                 android:gravity="center"
-                android:textSize="25sp"
-                />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/player4"
@@ -113,8 +113,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
                 android:gravity="center"
-                android:textSize="25sp"
-                />
+                android:textSize="20sp" />
 
         </LinearLayout>
 
@@ -140,7 +139,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:textSize="17sp" />
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/record1"
@@ -148,7 +147,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:gravity="center"
-                    android:textSize="17sp" />
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/record2"
@@ -156,7 +155,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:gravity="center"
-                    android:textSize="17sp" />
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/record3"
@@ -164,7 +163,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:gravity="center"
-                    android:textSize="17sp" />
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/record4"
@@ -172,15 +171,56 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:gravity="center"
-                    android:textSize="17sp" />
+                    android:textSize="20sp" />
             </LinearLayout>
         </ScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:text="總分"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:id="@+id/total1"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:id="@+id/total2"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:id="@+id/total3"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:id="@+id/total4"/>
+
+        </LinearLayout>
+
+
     </LinearLayout>
-
-
-
-
-
 
 
 </LinearLayout>

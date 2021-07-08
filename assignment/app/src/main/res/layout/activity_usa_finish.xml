@@ -20,15 +20,13 @@
             android:layout_marginRight="50dp"
             android:layout_marginTop="15dp"
             android:id="@+id/menu"/>
-
         <Button
             android:id="@+id/back"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@drawable/back"
             android:layout_marginTop="15dp"
-            android:layout_marginLeft="70dp"
-
+            android:layout_marginLeft="60dp"
             />
         <Button
             android:id="@+id/home"
@@ -36,7 +34,7 @@
             android:layout_height="49dp"
             android:background="@drawable/home"
             android:layout_marginTop="15dp"
-            android:layout_marginLeft="180dp"
+            android:layout_marginLeft="125dp"
             />
         <Button
             android:id="@+id/people"
@@ -44,14 +42,23 @@
             android:layout_height="49dp"
             android:background="@drawable/people"
             android:layout_marginTop="15dp"
-            android:layout_marginLeft="290dp"
+            android:layout_marginLeft="190dp"
+            />
+        <Button
+            android:id="@+id/exit"
+            android:layout_width="45dp"
+            android:layout_height="49dp"
+            android:background="@drawable/exit"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="255dp"
             />
     </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="130dp"
         android:orientation="horizontal"
+        android:layout_marginHorizontal="50dp"
         android:gravity="center">
 
         <ImageView
@@ -74,12 +81,44 @@
             android:gravity="center"
             android:textStyle="bold"
             android:text="食邊個 ?"
-            android:textSize="30sp" />
+            android:textSize="30sp"
+            android:layout_marginTop="20dp"
+            />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:id="@+id/number"
+                android:layout_width="wrap_content"
+                android:layout_height="78dp"
+                android:gravity="center"
+                android:layout_marginLeft="30dp"
+                android:text="多少分?\n(必須大於或等於25)"
+                android:textSize="24sp"
+
+                />
+
+            <EditText
+                android:id="@+id/numberEaten"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="33dp"
+                android:inputType="number"
+                android:text=""
+                android:maxLength="3"
+                />
+        </LinearLayout>
 
         <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp">
 
             <Button
                 android:layout_width="270px"
@@ -119,44 +158,13 @@
                 android:layout_height="270px"
                 android:text="自摸"
                 android:textSize="20dp"
-                android:background="@drawable/player4"
+                android:background="@drawable/startb"
                 android:layout_marginLeft="150dp"
                 />
         </RelativeLayout>
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="35dp">
-
-            <TextView
-                android:id="@+id/number"
-                android:layout_width="wrap_content"
-                android:layout_height="78dp"
-                android:gravity="center"
-                android:layout_marginLeft="30dp"
-                android:text="多少分?\n(必須大於或等於25)"
-                android:textSize="26sp"
-
-                />
-
-            <EditText
-                android:id="@+id/numberEaten"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="30dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="33dp"
-                android:inputType="number"
-                android:text=""
-                android:maxLength="3"
-                />
-        </LinearLayout>
-
-
-
 
     </LinearLayout>
+
 </LinearLayout>

@@ -20,15 +20,13 @@
             android:layout_marginRight="50dp"
             android:layout_marginTop="15dp"
             android:id="@+id/menu"/>
-
         <Button
             android:id="@+id/back"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@drawable/back"
             android:layout_marginTop="15dp"
-            android:layout_marginLeft="70dp"
-
+            android:layout_marginLeft="60dp"
             />
         <Button
             android:id="@+id/home"
@@ -36,7 +34,7 @@
             android:layout_height="49dp"
             android:background="@drawable/home"
             android:layout_marginTop="15dp"
-            android:layout_marginLeft="180dp"
+            android:layout_marginLeft="125dp"
             />
         <Button
             android:id="@+id/people"
@@ -44,14 +42,23 @@
             android:layout_height="49dp"
             android:background="@drawable/people"
             android:layout_marginTop="15dp"
-            android:layout_marginLeft="290dp"
+            android:layout_marginLeft="190dp"
+            />
+        <Button
+            android:id="@+id/exit"
+            android:layout_width="45dp"
+            android:layout_height="49dp"
+            android:background="@drawable/exit"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="255dp"
             />
     </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="130dp"
         android:orientation="horizontal"
+        android:layout_marginHorizontal="50dp"
         android:gravity="center">
 
         <ImageView
@@ -73,57 +80,9 @@
             android:layout_height="70dp"
             android:gravity="center"
             android:textStyle="bold"
-            android:text="糊誰  ?"
-            android:textSize="30sp" />
-
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-
-            <Button
-                android:layout_width="270px"
-                android:layout_height="270px"
-                android:id="@+id/player1"
-                android:background="@drawable/player1"
-                />
-
-
-
-            <Button
-                android:id="@+id/player2"
-                android:layout_width="270px"
-                android:layout_height="270px"
-                android:layout_marginLeft="150dp"
-                android:background="@drawable/player2"
-                />
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp">
-
-            <Button
-                android:id="@+id/player3"
-                android:layout_width="270px"
-                android:layout_height="270px"
-                android:background="@drawable/player3"
-                />
-
-
-            <Button
-                android:id="@+id/self"
-                android:layout_width="270px"
-                android:layout_height="270px"
-                android:text="自摸"
-                android:textSize="20dp"
-                android:background="@drawable/player4"
-                android:layout_marginLeft="150dp"
-                />
-        </RelativeLayout>
-
+            android:text="食邊個 ?"
+            android:textSize="30sp"
+            android:layout_marginTop="20dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -149,6 +108,7 @@
                 android:maxLength="3"
                 android:text="" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -156,15 +116,20 @@
             android:layout_marginTop="10dp"
             android:gravity="center">
             <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="誰是莊家?"
+                android:textSize="20dp"
+                />
+            <TextView
                 android:id="@+id/whoMainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textStyle="bold"
-                android:maxLines="2"
-                android:text="誰是莊家?\n(自摸時才選，自身非莊家，系統會自動多糊莊家一台)"
-                android:textSize="17dp"
-
+                android:text="(自摸時才選，自身非莊家，系統會自動多糊莊家一台)"
+                android:textSize="15dp"
                 />
 
             <RadioGroup
@@ -215,6 +180,57 @@
             </RadioGroup>
 
         </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp">
+
+            <Button
+                android:layout_width="270px"
+                android:layout_height="270px"
+                android:id="@+id/player1"
+                android:background="@drawable/player1"
+                />
+
+
+
+            <Button
+                android:id="@+id/player2"
+                android:layout_width="270px"
+                android:layout_height="270px"
+                android:layout_marginLeft="150dp"
+                android:background="@drawable/player2"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp">
+
+            <Button
+                android:id="@+id/player3"
+                android:layout_width="270px"
+                android:layout_height="270px"
+                android:background="@drawable/player3"
+                />
+
+
+            <Button
+                android:id="@+id/self"
+                android:layout_width="270px"
+                android:layout_height="270px"
+                android:text="自摸"
+                android:textSize="20dp"
+                android:background="@drawable/startb"
+                android:layout_marginLeft="150dp"
+                />
+        </RelativeLayout>
+
+
+
 
 
 

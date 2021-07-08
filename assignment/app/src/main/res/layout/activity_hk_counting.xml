@@ -16,43 +16,45 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@drawable/menub"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="45dp"
             android:layout_marginTop="15dp"
             android:id="@+id/menu"/>
-
         <Button
             android:id="@+id/back"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@drawable/back"
             android:layout_marginTop="15dp"
-            android:layout_marginLeft="70dp"
-
-            />
+            android:layout_marginLeft="60dp" />
         <Button
             android:id="@+id/home"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="49dp"
+            android:layout_height="49dp"
             android:background="@drawable/home"
             android:layout_marginTop="15dp"
-            android:layout_marginLeft="180dp"
-            />
+            android:layout_marginLeft="125dp" />
         <Button
             android:id="@+id/people"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="49dp"
+            android:layout_height="49dp"
             android:background="@drawable/people"
             android:layout_marginTop="15dp"
-            android:layout_marginLeft="290dp"
-            />
-
+            android:layout_marginLeft="190dp" />
+        <Button
+            android:id="@+id/exit"
+            android:layout_width="45dp"
+            android:layout_height="49dp"
+            android:background="@drawable/exit"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="255dp" />
     </RelativeLayout>
 
     <ImageView
         android:layout_width="wrap_content"
-        android:layout_height="150dp"
+        android:layout_height="140dp"
         android:src="@drawable/logo"
+        android:layout_marginHorizontal="50dp"
         />
 
 
@@ -64,6 +66,15 @@
         android:gravity="center"
         >
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="按下按鈕開始計算"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="30dp"
+            />
+
 
 
         <LinearLayout
@@ -72,6 +83,7 @@
             android:orientation="vertical"
             android:background="@drawable/bgy"
             android:padding="35dp"
+            android:layout_marginTop="10dp"
             >
 
             <RelativeLayout
@@ -84,8 +96,6 @@
                     android:id="@+id/player1"
                     android:background="@drawable/player1"
                     />
-
-
 
                 <Button
                     android:id="@+id/player2"
@@ -121,24 +131,32 @@
 
         </LinearLayout>
 
+
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:gravity="center">
-
-
+            android:layout_marginTop="30dp">
             <ImageButton
                 android:id="@+id/recordPage"
-                android:layout_width="match_parent"
+                android:layout_width="130dp"
                 android:layout_height="50dp"
                 android:background="@drawable/doneb"
                 android:src="@drawable/reco"
-                android:layout_marginLeft="140dp"
-                android:layout_marginRight="140dp"
+
                 />
-
-
+            <Button
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="180dp"
+                android:id="@+id/finish"
+                android:background="@drawable/doneb"
+                android:text="結束這一局"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="14sp"/>
         </RelativeLayout>
+
+
+
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>

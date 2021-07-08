@@ -20,15 +20,13 @@
             android:layout_marginRight="50dp"
             android:layout_marginTop="15dp"
             android:id="@+id/menu"/>
-
         <Button
             android:id="@+id/back"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@drawable/back"
             android:layout_marginTop="15dp"
-            android:layout_marginLeft="70dp"
-
+            android:layout_marginLeft="60dp"
             />
         <Button
             android:id="@+id/home"
@@ -36,7 +34,7 @@
             android:layout_height="49dp"
             android:background="@drawable/home"
             android:layout_marginTop="15dp"
-            android:layout_marginLeft="180dp"
+            android:layout_marginLeft="125dp"
             />
         <Button
             android:id="@+id/people"
@@ -44,14 +42,23 @@
             android:layout_height="49dp"
             android:background="@drawable/people"
             android:layout_marginTop="15dp"
-            android:layout_marginLeft="290dp"
+            android:layout_marginLeft="190dp"
+            />
+        <Button
+            android:id="@+id/exit"
+            android:layout_width="45dp"
+            android:layout_height="49dp"
+            android:background="@drawable/exit"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="255dp"
             />
     </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="130dp"
         android:orientation="horizontal"
+        android:layout_marginHorizontal="50dp"
         android:gravity="center">
 
         <ImageView
@@ -70,8 +77,7 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="480dp"
-            android:layout_margin="15dp"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:scrollbarAlwaysDrawHorizontalTrack="true"
             android:scrollbars="none">
@@ -87,63 +93,22 @@
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
                     android:gravity="center"
-                    android:text="糊誰  ?"
+                    android:text="食邊個 ?"
                     android:textSize="30sp"
-                    android:textStyle="bold" />
-
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <Button
-                        android:id="@+id/player1"
-                        android:layout_width="270px"
-                        android:layout_height="270px"
-                        android:background="@drawable/player1" />
-
-
-                    <Button
-                        android:id="@+id/player2"
-                        android:layout_width="270px"
-                        android:layout_height="270px"
-                        android:layout_marginLeft="150dp"
-                        android:background="@drawable/player2" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="50dp">
-
-                    <Button
-                        android:id="@+id/player3"
-                        android:layout_width="270px"
-                        android:layout_height="270px"
-                        android:background="@drawable/player3" />
-
-
-                    <Button
-                        android:id="@+id/self"
-                        android:layout_width="270px"
-                        android:layout_height="270px"
-                        android:layout_marginLeft="150dp"
-                        android:text="自摸"
-                        android:textSize="20dp"
-                        android:background="@drawable/player4" />
-                </RelativeLayout>
-
+                    android:textStyle="bold"
+                    android:layout_marginTop="20dp"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp"
+                    >
 
                     <TextView
                         android:id="@+id/number"
                         android:layout_width="wrap_content"
-                        android:layout_height="78dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginLeft="81dp"
                         android:gravity="center"
                         android:text="多少番?"
@@ -160,7 +125,10 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginHorizontal="15dp">
 
                     <TextView
                         android:id="@+id/Fu"
@@ -174,8 +142,8 @@
                         android:id="@+id/numberOfFu"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="18dp"
-                        android:layout_marginRight="49dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="10dp"
                         android:inputType="number"
                         android:maxLength="3"
                         android:text="" />
@@ -189,15 +157,20 @@
                     android:orientation="vertical">
 
                     <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="誰是莊家?"
+                        android:textSize="20dp"
+                        />
+                    <TextView
                         android:id="@+id/whoMainer"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:maxLines="2"
-                        android:text="誰是莊家?\n(自摸時才選，自身非莊家，系統會自動多糊莊家一台)"
-                        android:textSize="17dp"
-                        android:textStyle="bold"
-
+                        android:text="(自摸時才選，自身非莊家，系統會自動多糊莊家一台)"
+                        android:textSize="15dp"
                         />
 
                     <RadioGroup
@@ -248,6 +221,52 @@
                     </RadioGroup>
 
                 </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp">
+
+                    <Button
+                        android:id="@+id/player1"
+                        android:layout_width="270px"
+                        android:layout_height="270px"
+                        android:background="@drawable/player1" />
+
+
+                    <Button
+                        android:id="@+id/player2"
+                        android:layout_width="270px"
+                        android:layout_height="270px"
+                        android:layout_marginLeft="150dp"
+                        android:background="@drawable/player2" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp">
+
+                    <Button
+                        android:id="@+id/player3"
+                        android:layout_width="270px"
+                        android:layout_height="270px"
+                        android:background="@drawable/player3" />
+
+
+                    <Button
+                        android:id="@+id/self"
+                        android:layout_width="270px"
+                        android:layout_height="270px"
+                        android:layout_marginLeft="150dp"
+                        android:text="自摸"
+                        android:textSize="20dp"
+                        android:background="@drawable/startb" />
+                </RelativeLayout>
+
+
+
 
             </LinearLayout>
         </ScrollView>

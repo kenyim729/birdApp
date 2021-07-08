@@ -16,48 +16,45 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@drawable/menub"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="45dp"
             android:layout_marginTop="15dp"
-            android:id="@+id/menu"
-            />
-
+            android:id="@+id/menu"/>
         <Button
             android:id="@+id/back"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@drawable/back"
             android:layout_marginTop="15dp"
-            android:layout_marginLeft="70dp"
-
-            />
+            android:layout_marginLeft="60dp" />
         <Button
             android:id="@+id/home"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="49dp"
+            android:layout_height="49dp"
             android:background="@drawable/home"
             android:layout_marginTop="15dp"
-            android:layout_marginLeft="180dp"
-            />
+            android:layout_marginLeft="125dp" />
         <Button
             android:id="@+id/people"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="49dp"
+            android:layout_height="49dp"
             android:background="@drawable/people"
             android:layout_marginTop="15dp"
-            android:layout_marginLeft="290dp"
-            />
-
-
-
-
-
+            android:layout_marginLeft="190dp" />
+        <Button
+            android:id="@+id/exit"
+            android:layout_width="45dp"
+            android:layout_height="49dp"
+            android:background="@drawable/exit"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="255dp" />
     </RelativeLayout>
 
     <ImageView
         android:layout_width="wrap_content"
-        android:layout_height="150dp"
+        android:layout_height="140dp"
         android:src="@drawable/logo"
+        android:layout_marginHorizontal="50dp"
         />
 
 
@@ -84,7 +81,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="60dp"
             >
 
             <RelativeLayout
@@ -93,8 +90,8 @@
 
                 <Button
                     android:id="@+id/hk"
-                    android:layout_width="270px"
-                    android:layout_height="270px"
+                    android:layout_width="300px"
+                    android:layout_height="300px"
                     android:textSize="30dp"
                     android:background="@drawable/doneb"
                     android:text="港"
@@ -103,8 +100,8 @@
 
                 <Button
                     android:id="@+id/tw"
-                    android:layout_width="270px"
-                    android:layout_height="270px"
+                    android:layout_width="300px"
+                    android:layout_height="300px"
                     android:layout_marginLeft="150dp"
                     android:background="@drawable/doneb"
                     android:text="台"
@@ -122,8 +119,8 @@
 
                 <Button
                     android:id="@+id/jp"
-                    android:layout_width="270px"
-                    android:layout_height="270px"
+                    android:layout_width="300px"
+                    android:layout_height="300px"
                     android:background="@drawable/doneb"
                     android:text="日"
                     android:textSize="30dp"
@@ -133,8 +130,8 @@
 
                 <Button
                     android:id="@+id/usa"
-                    android:layout_width="270px"
-                    android:layout_height="270px"
+                    android:layout_width="300px"
+                    android:layout_height="300px"
                     android:background="@drawable/doneb"
                     android:layout_marginLeft="150dp"
                     android:text="美"

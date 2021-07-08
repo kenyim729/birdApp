@@ -16,47 +16,45 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@drawable/menub"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="45dp"
             android:layout_marginTop="15dp"
             android:id="@+id/menu"/>
-
         <Button
             android:id="@+id/back"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@drawable/back"
             android:layout_marginTop="15dp"
-            android:layout_marginLeft="70dp"
-
-            />
+            android:layout_marginLeft="60dp" />
         <Button
             android:id="@+id/home"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="49dp"
+            android:layout_height="49dp"
             android:background="@drawable/home"
             android:layout_marginTop="15dp"
-            android:layout_marginLeft="180dp"
-            />
+            android:layout_marginLeft="125dp" />
         <Button
             android:id="@+id/people"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="49dp"
+            android:layout_height="49dp"
             android:background="@drawable/people"
             android:layout_marginTop="15dp"
-            android:layout_marginLeft="290dp"
-            />
-
-
-
-
-
+            android:layout_marginLeft="190dp" />
+        <Button
+            android:id="@+id/exit"
+            android:layout_width="45dp"
+            android:layout_height="49dp"
+            android:background="@drawable/exit"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="255dp" />
     </RelativeLayout>
 
     <ImageView
         android:layout_width="wrap_content"
-        android:layout_height="150dp"
+        android:layout_height="140dp"
         android:src="@drawable/logo"
+        android:layout_marginHorizontal="50dp"
         />
 
 
@@ -71,10 +69,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Player"
-            android:textSize="20dp"
+            android:text="按下按鈕開始計算"
+            android:textSize="20sp"
+
             android:textStyle="bold"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="30dp"
             />
 
 
@@ -116,8 +115,9 @@
                     android:id="@+id/stand1"
                     android:layout_width="270px"
                     android:layout_height="50px"
-                    android:textSize="20px"
+                    android:textSize="25px"
                     android:text="立直"
+                    android:textStyle="bold"
                     android:background="@drawable/player1"
                     android:layout_marginTop="7dp"
 
@@ -129,7 +129,8 @@
                     android:layout_height="50px"
                     android:layout_marginLeft="150dp"
                     android:text="立直"
-                    android:textSize="20px"
+                    android:textSize="25px"
+                    android:textStyle="bold"
                     android:background="@drawable/player2"
                     android:layout_marginTop="7dp"
 
@@ -158,6 +159,7 @@
                     android:background="@drawable/player4"
                     android:layout_marginLeft="150dp"
                     android:text="Player1"
+
                     />
             </RelativeLayout>
             <RelativeLayout
@@ -168,11 +170,11 @@
                     android:id="@+id/stand3"
                     android:layout_width="270px"
                     android:layout_height="50px"
-                    android:textSize="20px"
+                    android:textSize="25px"
                     android:text="立直"
                     android:background="@drawable/player3"
                     android:layout_marginTop="7dp"
-
+                    android:textStyle="bold"
                     />
 
                 <Button
@@ -181,7 +183,8 @@
                     android:layout_height="50px"
                     android:layout_marginLeft="150dp"
                     android:text="立直"
-                    android:textSize="20px"
+                    android:textStyle="bold"
+                    android:textSize="25px"
                     android:background="@drawable/player4"
                     android:layout_marginTop="7dp"
 
@@ -195,19 +198,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp">
-
-
             <ImageButton
                 android:id="@+id/recordPage"
-                android:layout_width="match_parent"
+                android:layout_width="130dp"
                 android:layout_height="50dp"
                 android:background="@drawable/doneb"
                 android:src="@drawable/reco"
-                android:layout_marginLeft="140dp"
-                android:layout_marginRight="140dp"
+
                 />
-
-
+            <Button
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="180dp"
+                android:id="@+id/finish"
+                android:background="@drawable/doneb"
+                android:text="結束這一局"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="14sp"/>
         </RelativeLayout>
 
 
