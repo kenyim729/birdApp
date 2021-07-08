@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,7 +18,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.model.CommentRecord;
-import com.example.myapplication.model.CountRecord;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -41,7 +39,7 @@ public class Discuss extends AppCompatActivity {
 
     private EditText add_comment;
     private RecyclerView recycler_view;
-    private MyAdapter adapter;
+    private MyDiscussAdapter adapter;
     Button back,home,people;
 
     private ArrayList<String> commentDataList = new ArrayList<>();
@@ -73,7 +71,7 @@ public class Discuss extends AppCompatActivity {
         //set RecycleView as a list
         recycler_view.setLayoutManager( new LinearLayoutManager(this));
 
-        adapter = new MyAdapter(commentDataList, userDataList);
+        adapter = new MyDiscussAdapter(commentDataList, userDataList);
         recycler_view.setAdapter(adapter);
 
         //================================================================
@@ -284,9 +282,11 @@ public class Discuss extends AppCompatActivity {
 
             commentRecordArrayList = jsonToArrayList_comment(retStr);
 
-            for ( CommentRecord cm : commentRecordArrayList ) {
-                commentDataList.add( cm.getComment() );
-                userDataList.add( cm.getCreateUser() );
+            if ( commentRecordArrayList != null && commentRecordArrayList.size() > 0 ) {
+                for ( CommentRecord cm : commentRecordArrayList ) {
+                    commentDataList.add( cm.getComment() );
+                    userDataList.add( cm.getCreateUser() );
+                }
             }
         }
     }

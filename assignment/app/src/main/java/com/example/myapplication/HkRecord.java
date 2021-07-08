@@ -1,18 +1,21 @@
 package com.example.myapplication;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.myapplication.model.CountRecord;
 
@@ -31,6 +34,10 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class HkRecord extends AppCompatActivity {
 
@@ -41,6 +48,11 @@ public class HkRecord extends AppCompatActivity {
     ArrayList<CountRecord> countRecords;
     int a = 0;
     int one,two,three,four;
+
+    private RecyclerView recycler_view_hkRecord;
+    private MyHkRecordAdapter adapter;
+    private Map<Integer, List<CountRecord>> hkRecordMap = new HashMap<>();
+    private Context c;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,63 +69,12 @@ public class HkRecord extends AppCompatActivity {
         SharedPreferences showMoney = getApplicationContext().getSharedPreferences("moneyCounting", Context.MODE_PRIVATE);
 
 
-
-        Player1 = findViewById(R.id.player1);
-        Player2 = findViewById(R.id.player2);
-        Player3 = findViewById(R.id.player3);
-        Player4 = findViewById(R.id.player4);
-        total1 = findViewById(R.id.total1);
-        total2 = findViewById(R.id.total2);
-        total3 = findViewById(R.id.total3);
-        total4 = findViewById(R.id.total4);
-        numberRecord = findViewById(R.id.recordNumber);
-        recording1 = findViewById(R.id.record1);
-        recording2 = findViewById(R.id.record2);
-        recording3 = findViewById(R.id.record3);
-        recording4 = findViewById(R.id.record4);
         back = findViewById(R.id.back);
         home = findViewById(R.id.home);
         people = findViewById(R.id.people);
         exit = findViewById(R.id.exit);
 
-
-        Player1.setText(name.getString("player1",""));
-        Player2.setText(name.getString("player2",""));
-        Player3.setText(name.getString("player3",""));
-        Player4.setText(name.getString("player4",""));
-
-
-
-        //get money
-        total1.setText("" + showMoney.getInt("first" , 0));
-        total2.setText("" + showMoney.getInt("second" , 0));
-        total3.setText("" + showMoney.getInt("third" , 0));
-        total4.setText("" + showMoney.getInt("fourth" , 0));
-
-        one = showMoney.getInt("first" , 0);
-        two = showMoney.getInt("second" , 0);
-        three = showMoney.getInt("third" , 0);
-        four = showMoney.getInt("fourth" , 0);
-
-        if(one > two && one > three && one > four){
-            total1.setBackgroundResource(R.drawable.crown2);
-        }
-
-        if(two > one  && two > three && two > four)
-            total2.setBackgroundResource(R.drawable.crown2);
-
-        if(three > one  && three > two && three > four)
-            total3.setBackgroundResource(R.drawable.crown2);
-
-        if(four > one  && four > two && four > three)
-            total4.setBackgroundResource(R.drawable.crown2);
-
-//        recording1.setText(record1.getString("recording1",""));
-//        recording2.setText(record2.getString("recording2",""));
-//        recording3.setText(record3.getString("recording3",""));
-//        recording4.setText(record4.getString("recording4",""));
-//        numberRecord.setText(numberOfRecord.getString("recording",""));
-
+        c = this;
         getData();
 
         back.setOnClickListener(new View.OnClickListener() {
@@ -252,6 +213,7 @@ public class HkRecord extends AppCompatActivity {
             return retStr;
         }
 
+        @RequiresApi(api = Build.VERSION_CODES.N)
         @Override
         protected void onPostExecute(String retStr) {
             super.onPostExecute(retStr);
@@ -261,6 +223,40 @@ public class HkRecord extends AppCompatActivity {
 
 //            network_TextView.setText(retStr);
             countRecords = jsonToArrayList_records(retStr);
+            System.out.println( "gameNo is : " + gameNo.getInt("game",0) );
+            System.out.println(countRecords.size());
+
+            if ( countRecords != null && countRecords.size() > 0 ) {
+
+                for (int i = 0; i < countRecords.size() ; i++ ) {
+                    CountRecord current = countRecords.get(i);
+                    if ( !hkRecordMap.containsKey( countRecords.get(i).getGame()) ) {
+                        List<CountRecord> list = new ArrayList<>();
+                        list.add(current);
+                        hkRecordMap.put(countRecords.get(i).getGame(), list);
+                    } else {
+                        hkRecordMap.get(current.getGame()).add(current);
+                    }
+                }
+
+                System.out.println( "hkRecordMap size: " + hkRecordMap.size() );
+
+                for ( Map.Entry<Integer, List<CountRecord>> entry : hkRecordMap.entrySet() ) {
+                    Integer test111 = entry.getKey();
+                    List<CountRecord> test222 = entry.getValue();
+                    System.out.println(test111 + ": \n" + test222) ;
+                }
+                //================================================================
+
+                recycler_view_hkRecord = findViewById(R.id.recycler_view_hkRecord);
+                //set RecycleView as a list
+                recycler_view_hkRecord.setLayoutManager( new LinearLayoutManager(c));
+
+                adapter = new MyHkRecordAdapter(hkRecordMap);
+                recycler_view_hkRecord.setAdapter(adapter);
+
+                //================================================================
+            }
 
             if ( countRecords != null && countRecords.size() > 0 ) {
                 String r1 = "";
@@ -279,14 +275,6 @@ public class HkRecord extends AppCompatActivity {
                         num += countRecords.get(i).getRound() + "\n\n";
                     }
                 }
-
-                recording1.setText(r1);
-                recording2.setText(r2);
-                recording3.setText(r3);
-                recording4.setText(r4);
-                numberRecord.setText(num);
-
-
             }
         }
     }

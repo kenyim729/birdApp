@@ -1,35 +1,23 @@
 package com.example.myapplication;
 
-import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.model.CommentRecord;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
-import java.net.URL;
 import java.util.List;
 
-public class MyAdapter extends RecyclerView.Adapter<com.example.myapplication.MyAdapter.ViewHolder> {
+public class MyDiscussAdapter extends RecyclerView.Adapter<MyDiscussAdapter.ViewHolder> {
 
     private List<String> mData;
     private List<String> userData;
 
 
-    MyAdapter(List<String> data, List<String> uData) { mData = data; userData = uData; }
+    MyDiscussAdapter(List<String> data, List<String> uData) { mData = data; userData = uData; }
 
     //Create ViewHolder
     class ViewHolder extends RecyclerView.ViewHolder{
